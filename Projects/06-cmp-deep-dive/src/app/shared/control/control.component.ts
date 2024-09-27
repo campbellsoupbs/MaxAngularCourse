@@ -1,4 +1,4 @@
-import { Component, input, ViewEncapsulation } from '@angular/core';
+import { Component, contentChild, ElementRef, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -13,4 +13,6 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
 })
 export class ControlComponent {
   label = input.required<string>();
+  // ViewChild alt for projected content (w/Signals) 
+  private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input'); 
 }
