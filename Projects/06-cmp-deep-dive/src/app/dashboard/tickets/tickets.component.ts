@@ -17,9 +17,18 @@ export class TicketsComponent {
     const ticket: Ticket = {
       title: ticketData.title,
       request: ticketData.text,
-      id: Math.random.toString(),
+      id: (this.tickets.length + 1).toString(),
       status: 'open'
     }
     this.tickets.push(ticket);
+  }
+
+  onCloseTicket(id: string) {
+    this.tickets = this.tickets.map((ticket) => {
+      if(ticket.id == id) {
+        return {...ticket, status: 'closed'}
+      }
+      return ticket;
+    })
   }
 }
